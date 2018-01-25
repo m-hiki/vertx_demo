@@ -1,1 +1,8 @@
-# vertx_sample
+# vertx_demo
+
+
+## Launch
+
+```
+./gradlew run
+```
