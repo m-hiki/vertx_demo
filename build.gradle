@@ -6,6 +6,8 @@ plugins {
 
 ext {
   vertxVersion = '3.5.0'
+  slf4jVersion = '1.7.25'
+  logbackVersion = '1.2.3'
 }
 
 repositories {
@@ -21,11 +23,15 @@ dependencies {
 
   compile "io.vertx:vertx-core:$vertxVersion"
   compile "io.vertx:vertx-unit:$vertxVersion"
-
+  compile "org.slf4j:slf4j-api:$slf4jVersion"
+  compile "ch.qos.logback:logback-classic:$logbackVersion"
 }
 
 mainClassName = 'io.vertx.core.Launcher'
 def mainVerticleName = 'com.example.demo.MainVerticle'
+def watchForChange = 'src/**/*.java'
+def doOnChange = './gradlew classes'
+
 
 shadowJar {
   classifier = 'fat'
@@ -35,7 +41,11 @@ shadowJar {
 }
 
 run {
-  args = ['run', mainVerticleName, "--launcher-class=$mainClassName"]
+  args = ['run', 
+          mainVerticleName,
+          "--redeploy=$watchForChange",
+          "--launcher-class=$mainClassName",
+          "--on-redeploy=$doOnChange"]
 }
 
 task wrapper(type: Wrapper) {
