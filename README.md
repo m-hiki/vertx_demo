@@ -7,6 +7,10 @@
 ./gradlew run
 ```
 
+## Environment
+- Visual Studio Code
+- Java Extension Pack
+
 ## Architecture
 - Language: Java 1.8.0_161
 - Build: Gradle 4.3.1

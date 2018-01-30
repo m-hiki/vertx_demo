@@ -9,10 +9,9 @@
             "type": "java",
             "request": "launch",
             "stopOnEntry": true,
-            "jdkPath": "${env:JAVA_HOME}/bin",
             "cwd": "${fileDirname}",
-            "startupClass": "${fileBasenameNoExtension}",
-            "classpath": [
+            "mainClass": "com.example.demo.MainVerticle",
+            "classpaths": [
                 ".",
                 "${fileDirname}"
             ]
@@ -22,14 +21,14 @@
             "type": "java",
             "request": "launch",
             "stopOnEntry": true,
-            "jdkPath": "${env:JAVA_HOME}/bin",
             "cwd": "${fileDirname}",
-            "startupClass": "${fileBasenameNoExtension}",
-            "classpath": [
+            "mainClass": "io.vertx.core.Launcher",
+            /*
+            "classPaths": [
                 ".",
                 "${fileDirname}"
-            ],
-            "externalConsole": true
+            ],*/
+            "args": "run com.example.demo.MainVerticle"
         }
     ]
 }
