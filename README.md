@@ -1,21 +1,19 @@
 # vertx_demo
 
-
-## Launch
-
-```shell
-./gradlew run
-```
-
 ## Environment
 - Visual Studio Code
-- Java Extension Pack
+    - Java Extension Pack
+    - Put lombok jar to any path in your computer. And add following setting in VS Code preferences
+```
+"java.jdt.ls.vmargs": "-javaagent:/path/to/lombok.jar -Xbootclasspath/a:/path/to/lombok.jar"
+```
 
 ## Architecture
 - Language: Java 1.8.0_161
 - Build: Gradle 4.3.1
-- Base Framework: Vert.x 3.5.0
+- Base Framework: Vert.x 3.5.0 + Lombok
 - Logging: SLF4J + Logback
+- 
 
 ### Design
 - Definitions
@@ -39,3 +37,14 @@
 - Verticle
     - 
     - 
+
+## Modules
+- front
+- admin
+- domain
+
+## Launch
+
+```shell
+./gradlew run
+```

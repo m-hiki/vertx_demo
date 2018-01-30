@@ -1,3 +1,6 @@
+/**
+ */
+
 buildscript {
   repositories {
     mavenLocal()
@@ -9,13 +12,13 @@ buildscript {
   }  
 }
 
-ext {
-  vertxVersion = '3.5.0'
-  slf4jVersion = '1.7.25'
-  logbackVersion = '1.2.3'
-}
+
+ext.versions = [
+  vertx: '3.5.0'
+]
 
 subprojects {
+  //apply plugin: 'io.franzbecker.gradle-lombok' version '1.11'
   apply plugin: 'java'
   apply plugin: 'application'
   apply plugin: 'com.github.johnrengelman.shadow'
@@ -30,10 +33,11 @@ subprojects {
   }
 
   dependencies {
-    compile "io.vertx:vertx-core:$vertxVersion"
-    compile "io.vertx:vertx-web:$vertxVersion"
-    compile "io.vertx:vertx-unit:$vertxVersion"
-    compile "org.slf4j:slf4j-api:$slf4jVersion"
-    compile "ch.qos.logback:logback-classic:$logbackVersion"
+    compileOnly 'org.projectlombok:lombok:1.16.8'
+    compile 'io.vertx:vertx-core:' + versions.vertx
+    compile 'io.vertx:vertx-web:' + versions.vertx
+    compile 'io.vertx:vertx-unit:' + versions.vertx
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
   }
 }

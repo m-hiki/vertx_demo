@@ -1,15 +1,8 @@
 
 
 dependencies {
-  compile "io.vertx:vertx-web-templ-thymeleaf:$vertxVersion"
+  compile 'io.vertx:vertx-web-templ-thymeleaf:' + versions.vertx
 }
-
-
-mainClassName = 'io.vertx.core.Launcher'
-def mainVerticleName = 'com.example.demo.MainVerticle'
-def watchForChange = 'src/**/*.java'
-def doOnChange = './gradlew classes'
-
 
 shadowJar {
   classifier = 'fat'
@@ -18,12 +11,17 @@ shadowJar {
   }
 }
 
+mainClassName = 'io.vertx.core.Launcher'
+def mainVerticleName = 'com.example.demo.MainVerticle'
+def watchForChange = 'src/**/*.java'
+def doOnChange = './gradlew classes'
+
 run {
   args = ['run', 
           mainVerticleName,
-          "--redeploy=$watchForChange",
-          "--launcher-class=$mainClassName",
-          "--on-redeploy=$doOnChange"]
+          '--redeploy=$watchForChange',
+          '--launcher-class=$mainClassName',
+          '--on-redeploy=$doOnChange']
 }
 
 task wrapper(type: Wrapper) {

@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.domain.Message;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.templ.ThymeleafTemplateEngine;
@@ -32,10 +33,12 @@ public class MainVerticle extends AbstractVerticle {
 
         // In order to use a Thymeleaf template we first need to create an engine
         final ThymeleafTemplateEngine engine = ThymeleafTemplateEngine.create();
+        final Message message = new Message();
+        message.setText("Hi there!");
 
         router.get().handler(ctx -> {
             // we define a hardcoded title for our application
-            ctx.put("welcome", "Hi there!");
+            ctx.put("welcome", message.getText());
 
             // and now delegate to the engine to render it.
             engine.render(ctx, "templates/index.html", res -> {
